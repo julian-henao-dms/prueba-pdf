@@ -1,4 +1,4 @@
-<div class="container-home">
+<div class="container-home" id="htmlData">
 
 
     <mat-card>
@@ -36,6 +36,22 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
+    </mat-card>
+    <mat-card>
+        <article>
+            <h1>Prueba de texto</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est culpa voluptatem deleniti repudiandae fugiat, porro non nesciunt vel asperiores quibusdam iure? Temporibus quibusdam repellendus fugiat adipisci in maiores impedit non deserunt repellat
+                delectus, id, dolores sunt aperiam facere odit consectetur eum laboriosam doloribus amet, recusandae error molestias. Beatae et placeat non a, laborum nemo dolores consequuntur, animi delectus sequi porro commodi, nam hic repudiandae?
+                Placeat veritatis blanditiis fuga nam ipsa, quisquam eveniet nulla dolor totam maiores. Ducimus ullam obcaecati quaerat odit architecto, aliquam magni rerum voluptatibus necessitatibus omnis rem provident voluptatem, facilis vitae dolor
+                a harum autem quasi est suscipit!</p>
+            <figure class="img-article">
+                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+            </figure>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est culpa voluptatem deleniti repudiandae fugiat, porro non nesciunt vel asperiores quibusdam iure? Temporibus quibusdam repellendus fugiat adipisci in maiores impedit non deserunt repellat
+                delectus, id, dolores sunt aperiam facere odit consectetur eum laboriosam doloribus amet, recusandae error molestias. Beatae et placeat non a, laborum nemo dolores consequuntur, animi delectus sequi porro commodi, nam hic repudiandae?
+                Placeat veritatis blanditiis fuga nam ipsa, quisquam eveniet nulla dolor totam maiores. Ducimus ullam obcaecati quaerat odit architecto, aliquam magni rerum voluptatibus necessitatibus omnis rem provident voluptatem, facilis vitae dolor
+                a harum autem quasi est suscipit!</p>
+        </article>
     </mat-card>
 
     <mat-grid-list cols="2" gutterSize="10px" rowHeight="45em">
@@ -97,4 +113,7 @@
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
+</div>
+<div class="button-container">
+    <button mat-stroked-button color="accent" (click)="downloadPDF()">Descargar Pdf</button>
 </div>
