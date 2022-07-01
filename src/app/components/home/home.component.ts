@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+
 export interface Students {
   id: number;
   name: string;
   email: string;
   gender: string;
 }
+
 const ELEMENT_DATA: Students[]  = [
   {
     id: 1,
@@ -56,6 +58,8 @@ export class HomeComponent implements OnInit {
 
  
   title = 'prueba_pdf_maker';
+  isPrinting: boolean = false;
+  pdfPrintContent: any;
   
   constructor(){
   
@@ -63,29 +67,30 @@ export class HomeComponent implements OnInit {
 
   public downloadPDF() {
     // Extraemos el
-    const DATA: any = document.getElementById('htmlData');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
+    this.isPrinting = true;
+    const pdfContent: any = document.getElementById('htmlData');
+    // const pdfContent = this.pdfPrintContent.nativeElement;
+    html2canvas(pdfContent).then((canvas) => {
+      const fileWidth = 297;
+      const pageHeight = 430;
+      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const fileUri = canvas.toDataURL('image/png');
+      let position = 0;
+      let heightLeft = fileHeight - pageHeight;
+      const pdf = new jsPDF('l', 'mm', [fileWidth, pageHeight]);
 
-      const img = canvas.toDataURL('image/PNG');
-
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_listado.pdf`);
+      pdf.addImage(fileUri, 'PNG', 0, 0, fileWidth, pageHeight);
+      while(heightLeft > 0){
+        position = heightLeft - fileHeight + 29;
+        pdf.addPage();
+        pdf.addImage(fileUri, 'PNG', 0,  position, fileWidth, pageHeight);
+        heightLeft -= pageHeight;
+      }
+      pdf.save('test.pdf');
+      this.isPrinting = false;
     });
   }
-  
+
 
   ngOnInit(): void {
   }
