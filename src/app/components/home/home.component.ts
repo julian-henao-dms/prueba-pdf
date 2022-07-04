@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import {jsPDF} from 'jspdf';
 export interface Students {
   id: number;
   name: string;
@@ -46,6 +46,8 @@ const ELEMENT_DATA: Students[]  = [
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('htmlData', { static: false }) element!: ElementRef;
+ 
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
@@ -62,28 +64,16 @@ export class HomeComponent implements OnInit {
   }
 
   public downloadPDF() {
-    // Extraemos el
-    const DATA: any = document.getElementById('htmlData');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
-
-      const img = canvas.toDataURL('image/PNG');
-
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_listado.pdf`);
-    });
+    const doc = new jsPDF();
+   
+    doc.html(this.element.nativeElement, {
+      callback: (doc) =>{
+        doc.save('test.pdf');
+  
+      }
+    })
+    
+   
   }
   
 
