@@ -64,11 +64,11 @@ export class HomeComponent implements OnInit {
   }
 
   public downloadPDF() {
-    const doc = new jsPDF();
+    const doc = new jsPDF('p', 'pt', 'a4');
    
     doc.html(this.element.nativeElement, {
       callback: (doc) =>{
-        doc.save('test.pdf');
+        doc.save(`${new Date().toISOString()}_listado.pdf`);
   
       }
     })
