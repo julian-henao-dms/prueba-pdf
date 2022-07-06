@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 
 // Material
+
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,12 +33,24 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatChipsModule} from '@angular/material/chips';
+
+import { MatMenuModule } from '@angular/material/menu';
+
+import { MatSortModule } from '@angular/material/sort';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavigationComponent,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,7 +78,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatPaginatorModule,
     MatButtonToggleModule,
     MatToolbarModule,
-    MatGridListModule
+    MatGridListModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatSortModule,
+    MatChipsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
