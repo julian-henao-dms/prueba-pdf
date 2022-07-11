@@ -1,7 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import html2canvas from 'html2canvas';
-import {jsPDF} from 'jspdf';
+
+import htmlToPdfmake from 'html-to-pdfmake';   
+import jsPDF from 'jspdf';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 export interface Students {
   id: number;
   name: string;
@@ -80,7 +85,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  @ViewChild('htmlData', { static: false }) element!: ElementRef;
+  @ViewChild('htmlData', { static: false }) htmlData!: ElementRef;
  
   vegetables: Vegetable[] = [
     {name: 'apple'},
@@ -109,55 +114,19 @@ export class HomeComponent implements OnInit {
   constructor(){
   
   }
+
+
   public downloadPDF() {
-   
-      // const multiplier = 72;
-      // const orientation = width > height ? 'landscape' : 'portrait';
-      // const options = {
-      //   orientation,
-      //   unit: 'pt',
-      //   format: [width * multiplier, height * multiplier],
-      // };
-      const doc = new jsPDF('p', 'pt', 'a4');
-      const bufferX = 15;
-      const bufferY = 15;
-      let pWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      let scale = pWidth / 1138;
+    const doc = new jsPDF();
+    const htmlData = this.htmlData.nativeElement;
 
-      const docPrint: any = document.getElementById('container-pdf');
-      const printClone = docPrint.cloneNode(true);
-      const docClone = this.element.nativeElement.cloneNode(true);
-      // printClone.style.display = 'block';
-      // printClone.style.width = '100%';
-      printClone.appendChild(docClone)
+    var html = htmlToPdfmake(htmlData.innerHTML);
       
-      doc.html(docClone, {
-        callback: (doc) => {
-          doc.save(`${new Date().toISOString()}_listado.pdf`);
-        },
-        html2canvas: {
-          scale,
-          logging: true,
-          allowTaint: true,
-          useCORS: true,
-        },
-        margin: 0,
-      });
- 
-  }
-
-  // public downloadPDF() {
-  //   const doc = new jsPDF('p', 'pt', 'a4');
-   
-  //   doc.html(this.element.nativeElement, {
-  //     callback: (doc) =>{
-  //       doc.save(`${new Date().toISOString()}_listado.pdf`);
-  
-  //     }
-  //   })
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open(); 
     
    
-  // }
+  }
   
 
   ngOnInit(): void {

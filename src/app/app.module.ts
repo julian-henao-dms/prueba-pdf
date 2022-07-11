@@ -42,6 +42,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { MatSortModule } from '@angular/material/sort';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PdfMakeHtmlComponent } from './components/pdf-make-html/pdf-make-html.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     NavigationComponent,
     DashboardComponent,
+    PdfMakeHtmlComponent,
 
   ],
   imports: [
