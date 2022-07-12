@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PdfMakeHtmlComponent } from './components/pdf-make-html/pdf-make-html.component';
+import { PdfMakeTestComponent } from './components/pdf-make-test/pdf-make-test.component';
 
 @NgModule({
   declarations: [
@@ -52,11 +54,13 @@ import { PdfMakeHtmlComponent } from './components/pdf-make-html/pdf-make-html.c
     NavigationComponent,
     DashboardComponent,
     PdfMakeHtmlComponent,
+    PdfMakeTestComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatCardModule,
