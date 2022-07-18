@@ -109,7 +109,7 @@ export class PdfMakeTestComponent {
                       listType: 'none',
                       style: 'labelsHeaderAlt'
                     },
-                    { text: 'ASESOR:', alignment: 'right', listType: 'none' },
+                    { text: 'ASESOR:', alignment: 'right', listType: 'none', style: 'labelsHeaderAlt'},
                     {
                       text: 'Teléfono de contacto:',  
                       listType: 'none',              
@@ -1025,14 +1025,15 @@ export class PdfMakeTestComponent {
           // layout: 'noBorders',
           table: {
             widths: ['*', '*', '*', '*'],
+            heights: ['auto',100, 100],
             headerRows: 1,
 
             // keepWithHeaderRows: 1,
             body: [
               [
                 {
-                  text: 'Header with Colspan = 2',
-                  style: 'tableHeader',
+                  text: 'EXTERIOR DEL VEHÍCULO',
+                  style: 'tablesHead',
                   colSpan: 4,
                   alignment: 'center',
                 },
@@ -1045,6 +1046,28 @@ export class PdfMakeTestComponent {
                   text: 'Header 1',
                   style: 'tableHeader',
                   alignment: 'center',
+                  rowSpan: 2,
+                },
+                {
+                  text: 'Header 2',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                },
+                {
+                  text: 'Header 3',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                },
+                {
+                  text: 'Header 3',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  rowSpan: 2,
+                },
+              ],
+              [
+                {
+                  
                 },
                 {
                   text: 'Header 2',
@@ -1065,41 +1088,334 @@ export class PdfMakeTestComponent {
             ],
           },
         },
-
         {
-          text: 'Order Details',
-          style: 'sectionHeader',
-        },
-        // {
-        //   table: {
-        //     headerRows: 1,
-        //     widths: ['*', 'auto', 'auto', 'auto'],
-        //     body: [
-        //       ['Product', 'Price', 'Quantity', 'Amount'],
-        //       ...this.invoice.products.map(p => ([p.name, p.price, p.qty, (p.price*p.qty).toFixed(2)])),
-        //       [{text: 'Total Amount', colSpan: 3}, {}, {}, this.invoice.products.reduce((sum, p)=> sum + (p.qty * p.price), 0).toFixed(2)]
-        //     ]
-        //   }
-        // },
-        // {
-        //   text: 'Additional Details',
-        //   style: 'sectionHeader'
-        // },
-        // {
-        //     text: this.invoice.additionalDetails,
-        //     margin: [0, 0 ,0, 15]
-        // },
-        // {
-        //   columns: [
-        //     [{ qr: `${this.invoice.customerName}`, fit: '50' }],
-        //     [{ text: 'Signature', alignment: 'right', italics: true}],
-        //   ]
-        // },
-        // {
-        //   text: 'Terms and Conditions',
-        //   style: 'sectionHeader'
-        // },
+          margin: [2, 0, 0, 0],
+          style: 'tableExample',
+          color: '#444',
+          // layout: 'noBorders',
+          table: {
+            widths: ['*', '*', '*'],
+            heights: ['auto',120, 'auto', 'auto', 120, 'auto', 'auto'],
+            headerRows: 1,
 
+            // keepWithHeaderRows: 1,
+            body: [
+              [
+                {
+                  text: 'REGISTRO FOTOGRÁFICO',
+                  style: 'tablesHead',
+                  colSpan: 3,
+                  alignment: 'center',
+                },
+                {},
+                {},
+              ],
+              [
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+        
+                },
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, false]
+                },
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+      
+              ],
+              [
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false],
+                  margin: [0, 5, 0, 5],
+                },
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, false],
+                  margin: [0, 5, 0, 5],
+                },
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false],
+                  margin: [0, 5, 0, 5],
+                },
+              ],
+              [
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, false]
+                },
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+              ],
+              [
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+        
+                },
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, false]
+                },
+                {
+                  text: ' ',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+      
+              ],
+              [
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, false]
+                },
+                {
+                  text: 'Observaciones',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, false]
+                },
+              ],
+              [
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, true],
+                  margin: [0, 5, 0, 5],
+                },
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [false, false, false, true],
+                  margin: [0, 5, 0, 5],
+                },
+                {
+                  text: '___________________',
+                  style: 'tableHeader',
+                  alignment: 'center',
+                  border: [true, false, true, true],
+                  margin: [0, 5, 0, 5],
+                },
+              ],
+            ],
+          },
+        },
+        
+        {
+          style: 'tableExample',
+          color: '#444',
+          margin: [0, 0, 0, 5],
+          // layout: 'noBorders',
+          table: {
+            widths: ['*'],
+            heights: [60],
+            headerRows: 1,
+
+            // keepWithHeaderRows: 1,
+            body: [
+           
+              [{
+                columns: [
+                 [
+                   {
+                     style: 'tableExample',
+                     color: '#444',
+                     margin: [0, 0, 0, 5],
+                     // layout: 'noBorders',
+                     table: {
+                       widths: ['*'],
+                       heights: [60],
+                       headerRows: 1,
+           
+                       // keepWithHeaderRows: 1,
+                       body: [
+                      
+                         [{ text: ' ', alignment: 'center',  fillColor: '#E9E9E9',}],
+                       ],
+                     },
+                   },
+                 ],
+                 [
+                   {
+                     style: 'tableExample',
+                     color: '#444',
+                     margin: [0, 0, 0, 5],
+                     // layout: 'noBorders',
+                     table: {
+                       widths: [80],
+                       heights: [60],
+                       headerRows: 1,
+           
+                       // keepWithHeaderRows: 1,
+                       body: [
+                      
+                         [{ text: ' ', alignment: 'center',  fillColor: '#E9E9E9',}],
+                       ],
+                     },
+                   },
+                 ],
+                 
+               ],
+               margin: [0, 15],
+             },],
+            ],
+          },
+        },
+        
+        {
+          style: 'tableExample',
+          color: '#444',
+          // layout: 'noBorders',
+          table: {
+            widths: [20, '*', 60, 50, 60],
+            headerRows: 1,
+
+            // keepWithHeaderRows: 1,
+            body: [
+              [
+                {
+                  text: 'SOLICITUDES DEL CLIENTE',
+                  style: 'tablesHead',
+                  colSpan: 5,
+                  alignment: 'center',
+                },
+                {},
+                {},
+                {},
+                {},
+              ],
+              [
+                { text: 'Item',   style: 'labelsTable', alignment: 'center' },
+                { text: 'Descripción',   style: 'labelsTable', alignment: 'center' },
+                { text: 'Cargo cliente',   style: 'labelsTable', alignment: 'center' },
+                { text: 'Cantidad',   style: 'labelsTable', alignment: 'center' },
+                { text: 'Valor',   style: 'labelsTable', alignment: 'center'},
+              ],
+              [
+                { text: '1',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                { text: '2',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                { text: '3',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                { text: '4',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                { text: '5',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                { text: '6',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                { text: '',   style: 'labelsTable', alignment: 'center' },
+                {},
+              ],
+              [
+                {
+                  text: 'Subtotal:',
+                  style: 'labelsTable',
+                  colSpan: 5,
+                  alignment: 'left',
+                },
+                {},
+                {},
+                {},
+                {},
+              ],
+              [
+                {
+                  text: 'IVA:',
+                  style: 'labelsTable',
+                  colSpan: 5,
+                  alignment: 'left',
+                },
+                {},
+                {},
+                {},
+                {},
+              ],
+              [
+                {
+                  text: 'TOTAL:',
+                  style: 'labelsTable',
+                  colSpan: 5,
+                  alignment: 'left',
+                },
+                {},
+                {},
+                {},
+                {},
+              ],
+            ],
+          },
+          margin: [0, 15],
+        },
         {
           ul: [
             'Order can be return in max 10 days.',
